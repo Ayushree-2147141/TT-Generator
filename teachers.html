@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myteachersapp" ng-controller="teachersctrldetails">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
+    <script src="/angularapp.js"></script>
+    <title>Time Table Generator</title>
+</head>
+<style>
+    *{
+    margin : 0;
+}
+.navbar{
+    display: flex;
+    background-color: rgb(60, 60, 61);
+}
+.navbar li{
+    list-style-type: none;
+    float: left;
+    padding : 20px;
+    
+}
+
+.navbar a {
+    text-decoration: none;
+    color : white;
+}
+h3{
+    margin-top:30px;
+}
+form{
+    margin-top: 10px;
+}
+table{
+    margin-top: 20px;
+    border-collapse: collapse;
+    width:70%;
+}
+
+th, td{
+    border-bottom: 1px solid #DDD;
+}
+
+td{
+    text-align: center;
+}
+
+tr:hover {background-color: #e3e7e7;}
+
+p{
+    margin-top: 10px;
+
+}
+
+</style>
+<body>
+    <div class="navbar">
+        <ul>
+            <li>
+                <a href="/department">Department </a> 
+            </li>
+
+            <li>
+                <a href="/program">Program </a>
+            </li>
+
+            <li>
+                <a href="/teacher">Teacher</a>
+            </li>
+
+            <li>
+                <a href="/course">Course</a>
+            </li>
+
+            <li>
+                <a href="/rooms">Rooms</a>
+            </li>
+
+            <li>
+                <a href="/">Generate Time Table</a>
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        <center>
+            <h3>Teacher</h3>
+            <form method="post" action="/addTeacher">
+                <p>Salutation :
+                    <select name="teacherSalutation" id="teacherSalutation"> 
+                        <option value="Mr." id="Mr.">Mr.</option>
+                        <option value="Mrs." id="Mrs.">Mrs.</option>
+                        <option value="Ms." id="Ms.">Ms.</option>
+                        <option value="Dr." id="Dr.">Dr.</option>
+
+                    </select>
+                </p>
+                <p>
+                    First Name : 
+                    <input type="text" name="firstName" />
+                </p>
+                <p>
+                    Middle Name : 
+                    <input type="text" name="middleName" />
+                </p>
+                <p>
+                    Last Name : 
+                    <input type="text" name="lastName" />
+                </p>
+                <p>
+                    Teaching Hours : 
+                    <input type="number" name="teacherHours" />
+                </p>
+                <p>
+                    Program :
+                    <select name="teacherDeptId" id="teacherDeptId">
+                        <option value="2">Department of Computer Science</option>
+                        <option value="3">Department of Commerce</option>
+                        <option value="5">Department of Statistics</option>
+                    </select>
+                </p>
+                <br>
+                <input type="submit" value="submit" />
+            </form>
+        </center>
+    </div>
+
+    <center>
+        <h3>Teacher List</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Teacher Id</th>
+                    <!-- <th>Salutation</th> -->
+                    <th>Teacher Name</th>
+                    <!-- <th>Middle Name</th>
+                    <th>Last Name</th> -->
+                    <th>Short Name</th>
+                    <th>Teaching Hours</th>
+                    <th>Department Id</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="teacher in teachers">
+                    <td id="teacherId" name="teacherId">{{teacher.teacherId}}</td>
+                    <!-- <td id="teacherSalutation"  name="teacherSalutation">{{teacher.teacherSalutation}}</td> -->
+                    <td id="teacherFullName"  name="teacherFullName">{{teacher.teacherFullName}}</td>
+                    <!-- <td id="teacherMiddleName"  name="teacherMiddleName">{{teacher.teacherMiddleName}}</td>
+                    <td id="teacherLastName"  name="teacherLastName">{{teacher.teacherLastName}}</td> -->
+                    <td id="teacherShortName"  name="teacherShortName">{{teacher.teacherShortName}}</td>
+                    <td id="teacherHours"  name="teacherHours">{{teacher.teacherHours}}</td>
+                    <td id="teacherDeptId"  name="teacherDeptId">{{teacher.teacherDeptId}}</td>
+                    <td><input type="button" value="delete"> </td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+//Creating department table
+
+create table department(
+deptId int auto_increment primary key ,
+deptName varchar(50) not null unique
+);
+
+
+//creating table program
+
+create table program(
+programId varchar(10) primary key,
+programName varchar(50) not null,
+programAbbr varchar(5) not null,
+programYear int not null,
+programDeptId int not null
+);
+
+
+//creating table course
+
+create table course(
+courseId varchar(10) primary key,
+courseName varchar(50),
+courseAbbr varchar(5),
+courseSem int,
+courseType int,
+courseHours int,
+courseCredits int
+);
+
+
+//creating table teacher
+
+create table teachers(
+teacherId int auto_increment primary key ,
+teacherSalutation varchar(10),
+teacherFullName varchar(50),
+teacherShortName varchar(10),
+teacherHours int not null,
+teacherDeptId int
+);
+
+
+//creating table room
+create table room(
+roomId int primary key,
+roomVenue varchar(30),
+roomCapacity int
+);
+
+
+
+
