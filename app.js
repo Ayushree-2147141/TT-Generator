@@ -121,6 +121,19 @@ app.get('/chooseDepartment/:id',(req, res)=>{
     })
 })
 
+app.get('/getDepartmentId',(req, res)=>{
+    // console.log(req.params.id);
+
+    var deptId = req.params.id;
+    let sql = `select deptId from department`;
+    connection.query(sql, function(err, results)
+    {
+        if(err) throw err;
+        // console.log(results);
+        res.send(results);
+    })
+})
+
 //POST methods
 app.post('/addDepartment',function(req, res) {
     var deptName = req.body.deptName;

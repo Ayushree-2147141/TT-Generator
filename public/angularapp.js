@@ -24,16 +24,26 @@ indexApp.controller('indexctrldetails', function($scope, $http)
 
 indexApp.controller('chooseDeptCtrlDetails', function($scope, $http)
 {
-    $scope.departments = [3,2,8,5]; //want this to come from DB
+    // $scope.departments = [3,2,8,5]; //want this to come from DB
+    $http.get('http://127.0.0.1:3000/getDepartmentId')
+        .success(function(response){
+            // console.log('hello');
+            $scope.departments = response;
+            console.log(response);
+        })
     // console.log('Hello');
     $scope.fetch = function(departmentName){
+        console.log('hello');
         console.log(departmentName);
         $http.get('http://127.0.0.1:3000/chooseDepartment/'+departmentName)
         .success(function(response){
             $scope.programs = response;
             console.log(response);
         })
+
+        
     }
+    
 })
 
 

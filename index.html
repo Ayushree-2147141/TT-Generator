@@ -140,14 +140,33 @@ p{
                         <option value="8">Department of Psychology</option>
                     </select> -->
 
-                    <select ng-model="selectedDepartment" ng-options="dept for dept in departments" >
+                    <select ng-model="selectedDepartment" ng-options="deptId as dept.deptId for dept in departments" ng-change="fetch(deptId)">
 
                     </select>
+
                 </p>
 
                 <input type="submit" value="Proceed" ng-click="fetch(selectedDepartment)">
 
             </form>
+            <h3>Program</h3>
+            <table >
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Program Name</th>
+                        <!-- <th>Program Abbreviation</th>
+                        <th>Program Year</th>
+                        <th>Department Id</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="program in programs">
+                        <td name="programId">{{program.programId}}</td>
+                        <td name="programName">{{program.programName}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
       </div>
 
@@ -156,19 +175,22 @@ p{
       </h5>
 
       <div class="display-program-data">
-        <div class="left" ng-controller="chooseProgramCtrlDetails">
+        <div class="left">
             <h3>Program</h3>
-            <table>
+            <table >
                 <thead>
                     <tr>
                         <th>Id</th>
                         <th>Program Name</th>
+                        <!-- <th>Program Abbreviation</th>
+                        <th>Program Year</th>
+                        <th>Department Id</th> -->
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="program in programs">
-                        <td>{{program.programId}}</td>
-                        <td>{{program.programName}}</td>
+                        <td name="programId">{{program.programId}}</td>
+                        <td name="programName">{{program.programName}}</td>
                     </tr>
                 </tbody>
             </table>
