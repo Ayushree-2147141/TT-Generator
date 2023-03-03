@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myindexapp" >
+<html lang="en" ng-app="myindexapp">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,82 +11,97 @@
     <title>Time Table Generator</title>
 </head>
 <style>
-    *{
-    margin : 0;
-}
-.navbar{
-    display: flex;
-    background-color: rgb(60, 60, 61);
-}
-.navbar li{
-    list-style-type: none;
-    float: left;
-    padding : 20px;
-    
-}
+    * {
+        margin: 0;
+    }
 
-.navbar a {
-    text-decoration: none;
-    color : white;
-}
-h3{
-    margin-top:30px;
-}
-form{
-    margin-top: 10px;
-}
-table{
-    margin-top: 20px;
-    border-collapse: collapse;
-    width:70%;
-}
+    .navbar {
+        display: flex;
+        background-color: rgb(60, 60, 61);
+    }
 
-th, td{
-    border-bottom: 1px solid #DDD;
-}
+    .navbar li {
+        list-style-type: none;
+        float: left;
+        padding: 20px;
 
-td{
-    text-align: center;
-}
+    }
 
-tr:hover {background-color: #e3e7e7;}
+    .navbar a {
+        text-decoration: none;
+        color: white;
+    }
 
-.display-data{
-    width : 90%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    h3 {
+        margin-top: 30px;
+    }
 
-div.left, div.right{
-    padding : 10px;
-    width: 50%;
-}
+    form {
+        margin-top: 10px;
+    }
 
-div.right{
-    margin-top: 2%;
-    background-color: #e4e2e2;
-    justify-content: center;
-    align-items: center;
-}
+    table {
+        margin-top: 20px;
+        border-collapse: collapse;
+        width: 50%;
+    }
 
-.display-program-data{
-    width : 90%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    th,
+    td {
+        border-bottom: 1px solid #DDD;
+    }
+
+    td {
+        text-align: center;
+    }
+
+    tr:hover {
+        background-color: #e3e7e7;
+    }
+
+    .display-data {
+        width: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    div.left,
+    div.right {
+        padding: 10px;
+        width: 50%;
+    }
+
+    div.right {
+        margin-top: 2%;
+        background-color: #e4e2e2;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .display-program-data {
+        width: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
 
-p{
-    margin : 10px;
-}
+    p {
+        margin-top: 30px;
+    }
+
+    input{
+        margin: 10px;
+    }
+
 </style>
+
 <body>
     <div class="navbar">
         <ul>
             <li>
-                <a href="/department">Department </a> 
+                <a href="/department">Department </a>
             </li>
 
             <li>
@@ -110,101 +126,98 @@ p{
         </ul>
     </div>
     <center>
-      <div class="display-data">
-        <div class="left">
-            <h3>Department Data</h3>
-            <table ng-controller="indexctrldetails">
-                <thead>
-                    <tr>
-                        <th>Department Id</th>
-                        <th>Department Name</th>
-                        
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="dept in department">
-                        <td id="deptId" name="deptId">{{dept.deptId}}</td>
-                        <td id="deptName"  name="deptName">{{dept.deptName}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="right" ng-controller="chooseDeptCtrlDetails">
-            <form>
-                <p>
-                    Select Department :
-                    <!-- <select name="departmentId" id="departmentId">
-                        <option value="2">Department of Computer Science</option>
-                        <option value="3">Department of Commerce</option>
-                        <option value="5">Department of Statistics</option>
-                        <option value="8">Department of Psychology</option>
-                    </select> -->
+        <!-- <div class="display-data"> -->
+            <!-- <div class="left">
+                <h3>Department Data</h3> -->
+                <!-- <table ng-controller="indexctrldetails"> -->
+                    <!-- <table>
+                    <thead>
+                        <tr>
+                            <th>Department Id</th>
+                            <th>Department Name</th>
 
-                    <select ng-model="selectedDepartment" ng-options="deptId as dept.deptId for dept in departments" ng-change="fetch(deptId)">
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="dept in department">
+                            <td id="deptId" name="deptId">{{dept.deptId}}</td>
+                            <td id="deptName" name="deptName">{{dept.deptName}}</td>
+                        </tr>
+                    </tbody>
+                </table> -->
+            <!-- </div> -->
+            <!-- <div class="right" ng-controller="chooseDeptCtrlDetails"> -->
+                <div ng-controller="chooseDeptCtrlDetails">
+                    <h3>Department Data</h3>
+                <!-- <table ng-controller="indexctrldetails"> -->
+                    <table>
+                    <thead>
+                        <tr>
+                            <th>Department Id</th>
+                            <th>Department Name</th>
 
-                    </select>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="dept in department">
+                            <td id="deptId" name="deptId">{{dept.deptId}}</td>
+                            <td id="deptName" name="deptName">{{dept.deptName}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <form>
+                    <p>
+                        Select Department :
+                        <select ng-model="selectedDepartment" ng-options="dept.deptId for dept in departments">
+                        </select>
+                    </p>
+                    <input type="submit" value="Proceed" ng-click="fetch(selectedDepartment.deptId); showContent = true">
+                </form>
+                <div ng-show="showContent">
+                    <h3>Program</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Program Name</th>
+                                <!-- <th>Program Abbreviation</th>
+                            <th>Program Year</th>
+                            <th>Department Id</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="program in programs">
+                                <td name="programId">{{program.programId}}</td>
+                                <td name="programName">{{program.programName}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <form>
+                        <p>
+                            Select Program :
+                            <select ng-model="selectedProgram" ng-options="prog.programId for prog in programs"></select>
+                        </p>
+                        <input type="submit" value="Proceed" ng-click="getSemester(selectedProgram.programId)">
+                    </form>
+                </div>
 
-                </p>
+                <div>
+                    <form>
+                        <p>
+                            Select Semester : 
+                            <select ng-model="selectedSemester" ng-options="sem.semesterNumber for sem in semesters"></select>
+                        </p>
+                        <input type="submit" value="Proceed" ng-click="getCourse(selectedSemester.semesterNumber)">
+                    </form>
+                </div>
 
-                <input type="submit" value="Proceed" ng-click="fetch(selectedDepartment)">
+            </div>
+        <!-- </div> -->
 
-            </form>
-            <h3>Program</h3>
-            <table >
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Program Name</th>
-                        <!-- <th>Program Abbreviation</th>
-                        <th>Program Year</th>
-                        <th>Department Id</th> -->
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="program in programs">
-                        <td name="programId">{{program.programId}}</td>
-                        <td name="programName">{{program.programName}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-      </div>
-
-      <h5>After clicking proceed button for "Select department" program details, etc should be displayed. Initially everything below this should be hidden.
-        The options in "select department" should come from Database
-      </h5>
-
-      <div class="display-program-data">
-        <div class="left">
-            <h3>Program</h3>
-            <table >
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Program Name</th>
-                        <!-- <th>Program Abbreviation</th>
-                        <th>Program Year</th>
-                        <th>Department Id</th> -->
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="program in programs">
-                        <td name="programId">{{program.programId}}</td>
-                        <td name="programName">{{program.programName}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="right">
-            <form>
-                <p>
-                    Select Program :
-                    <select ng-model="selectedProgram" ng-options="prog for prog in program"></select>
-                </p>
-                <input type="submit" value="Proceed" ng-click="fetch(selectedProgram)">
-            </form>
-        </div>
-      </div>
+        
     </center>
 </body>
+
 </html>

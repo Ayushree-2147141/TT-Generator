@@ -59,13 +59,13 @@ app.get('/getdepartment/:id',(req, res)=>{
 });
 
 
-app.get('/getdepartment',(req, res)=>{
-    let sql = 'SELECT * FROM department';
-    connection.query(sql, function(err,results){
-        if(err) throw err;
-        res.send(results);
-    })
-})
+// app.get('/getdepartment',(req, res)=>{
+//     let sql = 'SELECT * FROM department';
+//     connection.query(sql, function(err,results){
+//         if(err) throw err;
+//         res.send(results);
+//     })
+// })
     
 app.get('/getProgram', (req, res)=>
 {
@@ -110,8 +110,8 @@ app.get('/getRooms', (req, res)=>
 
 app.get('/chooseDepartment/:id',(req, res)=>{
     // console.log(req.params.id);
-
     var deptId = req.params.id;
+    // console.log(req.params.id);
     let sql = `select * from program where programDeptId = ${deptId}`;
     connection.query(sql, function(err, results)
     {
@@ -119,6 +119,28 @@ app.get('/chooseDepartment/:id',(req, res)=>{
         // console.log(results);
         res.send(results);
     })
+})
+
+app.get('/chooseSemester/:id',(req, res) => {
+    var programId = req.params.id;
+    // console.log('Program Id :', programId);
+    let sql = `select semesterNumber from semester where programId = "${programId}"`;
+    // console.log(sql);
+    connection.query(sql, function(err, results) {
+        if(err) throw err;
+        res.send(results)
+    })
+})
+
+app.get('/showCourse/:id/:dept',(req,res)=>{
+    var semesterNum = req.params.id;
+    var dept = req.params.dept;
+
+    // console.log('this is sem: ',semesterNum);
+    // console.log('this is dept :', dept);
+
+    let sql = ``;
+
 })
 
 app.get('/getDepartmentId',(req, res)=>{
